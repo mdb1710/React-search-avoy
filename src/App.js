@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 /**
  * Avoy React Recruiting Quiz
@@ -44,32 +45,15 @@ class NewUsers extends React.Component {
     const newUsers = users.sort(function(a, b) {
       return new Date(a.last_login) - new Date(b.last_login);
     });
-    let userList;
-
-    if (hidden) {
-      userList = newUsers.map((user, index) => {
-        return (
-          <ul key={index}>
-            <li key={user.id} onClick={this.getId} data-id={user.id}>
-              {user.id}
-            </li>
-            <button onClick={this.getId}>See Info</button>
-          </ul>
-        );
-      });
-    } else {
-      userList = newUsers.map((user, index) => {
-        return (
-          <ul key={index}>
-            <li key={index}>
-              <p>{user.id}</p>
-              <p>{user.last_login}</p>
-              <button onClick={this.getId}>See Info</button>
-            </li>
-          </ul>
-        );
-      });
-    }
+    let userList = newUsers.map((user, index) => {
+      return (
+        <ul key={index}>
+          <li key={user.id} onClick={this.getId} data-id={user.id}>
+            {user.id}
+          </li>
+        </ul>
+      );
+    });
 
     return <div>{userList}</div>;
   }
